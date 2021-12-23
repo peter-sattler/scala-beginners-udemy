@@ -4,9 +4,9 @@ by [Daniel Ciocîrlan](https://www.udemy.com/user/daniel-ciocirlan/)
 
 # Important Links
 
-[Rock the JVM's Scala Beginners Course](https://www.udemy.com/course/rock-the-jvm-scala-for-beginners/)
-[Official GitHub Repository](https://github.com/rockthejvm/udemy-scala-beginners)
-[ROCK THE JVM!](https://rockthejvm.com)
+[Rock the JVM's Scala Beginners Course](https://www.udemy.com/course/rock-the-jvm-scala-for-beginners/)  
+[Official GitHub Repository](https://github.com/rockthejvm/udemy-scala-beginners)  
+[ROCK THE JVM!](https://rockthejvm.com)  
 
 Pete Sattler  
 23 December 2021  
