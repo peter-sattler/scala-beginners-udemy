@@ -1,7 +1,7 @@
 package net.sattler22.lectures.part1basics
 
 /**
- * Takeaways:
+ * Call by Name vs. Call by Value Takeaways:
  * <ol>
  *   <li>Call by value:</li>
  *   <ul>
@@ -16,7 +16,7 @@ package net.sattler22.lectures.part1basics
  * </ol>
  */
 object CBNvsCBV extends App {
-  /** Call by Name vs. Call by Value */
+
   def calledByValue(x: Long): Unit = {
     println("Call by value: " + x)
     println("Call by value: " + x)

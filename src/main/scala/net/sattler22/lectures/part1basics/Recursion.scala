@@ -3,7 +3,7 @@ package net.sattler22.lectures.part1basics
 import scala.annotation.tailrec
 
 /**
- * Takeaways:
+ * Recursion Takeaways:
  * <ol>
  *   <li>The JVM uses a call stack to track recursive calls (each one is a stack frame)</li>
  *   <li>When you need loops, use TAIL recursion (to avoid a stack overflow error)</li>

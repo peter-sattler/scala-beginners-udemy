@@ -1,7 +1,7 @@
 package net.sattler22.lectures.part1basics
 
 /**
- * Takeaways:
+ * Functions Takeaways:
  * <ol>
  *   <li>How to define Scala functions</li>
  *   <li>Using Unit type</li>
@@ -11,7 +11,7 @@ package net.sattler22.lectures.part1basics
  * </ol>
  */
 object Functions extends App {
-  /** Basics */
+
   def function1(a: String, b: Int): String = {
     a + " " + b
   }
