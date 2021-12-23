@@ -7,6 +7,7 @@ package net.sattler22.lectures.part1basics
  *   <li>Using Unit type</li>
  *   <li>Use nest functions (code blocks)</li>
  *   <li>Recursion in Scala</li>
+ *   <li>Compiler can infer data types and return types, but not the return type for a recursive function</li>
  * </ol>
  */
 object Functions extends App {
@@ -21,11 +22,11 @@ object Functions extends App {
   println(function2)               //Parameterless -- Scala 2 Only!!!
 
   //WHEN YOU NEED LOOPS, USE RECURSION!!!
-  def repeatedFunction(s: String, n: Int): String = {
+  def concatenate(s: String, n: Int): String = {
     if (n == 1) s
-    else s + repeatedFunction(s, n-1)
+    else s + concatenate(s, n - 1)
   }
-  println(repeatedFunction("Recursion1", 3))
+  println(concatenate("Recursion1", 3))
 
   //The compiler can infer the return type EXCEPT for recursive functions!!!
   //Best Practice: Always specify the return type
@@ -38,7 +39,7 @@ object Functions extends App {
   //Code blocks allow nesting:
   def bigFunction1(n: Int): Int = {
     def smallerFunction1(a: Int, b: Int): Int = a + b
-    smallerFunction1(n, n-1)
+    smallerFunction1(n, n - 1)
   }
 
   /** Exercises */
@@ -47,9 +48,9 @@ object Functions extends App {
   println(greeting("Pete", 56))
 
   //2. Factorial function => 1 * 2 * 3 ... n (recursive)
-  def factorial(n: Int):Int = {
+  def factorial(n: Int): Int = {
     if (n <= 0) 1
-    else n * factorial(n-1)
+    else n * factorial(n - 1)
   }
   println(factorial(5))  //120
 
@@ -59,7 +60,7 @@ object Functions extends App {
   //   fn(n) = fn(n-1) + fn(n-2) (recursive)
   def fibonacci(n: Int): Int = {
     if (n <= 2) 1  //The first two in the sequence are 1
-    else fibonacci(n-1) + fibonacci(n-2)
+    else fibonacci(n - 1) + fibonacci(n - 2)
   }
   // 1 1 2 3 5 8 13 21
   print(fibonacci(1) + " ")
