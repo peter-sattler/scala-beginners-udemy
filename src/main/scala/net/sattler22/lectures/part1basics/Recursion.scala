@@ -10,6 +10,7 @@ import scala.annotation.tailrec
  * </ol>
  */
 object Recursion extends App {
+
   /** Watch the stack */
   //WARNING: Potential stack over flow error!!!
   def factorial(n: Int): Int = {
@@ -33,6 +34,7 @@ object Recursion extends App {
     }
     factorialHelper(n, 1)
   }
+
   /*
    * factorialTailRecursion(10)
    *   = factorialHelper(10, 1)   //else branch

@@ -10,6 +10,7 @@ package net.sattler22.lectures.part1basics
  * </ol>
  */
 object DefaultArgs extends App {
+
   /** Default and Named Arguments */
   def factorialTailRec(n: Int, accumulator: Int = 1): Int = {
     if (n <= 1) accumulator

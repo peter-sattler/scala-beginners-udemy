@@ -19,6 +19,7 @@ package net.sattler22.lectures.part1basics
  * </ol>
  */
 object Expressions extends App {
+
   /** Variable Side Effects */
   val x1 = 1 + 2       //LHS is an expression
   println(x1)

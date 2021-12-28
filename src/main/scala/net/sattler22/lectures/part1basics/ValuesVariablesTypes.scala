@@ -12,6 +12,7 @@ package net.sattler22.lectures.part1basics
  * </ol>
  */
 object ValuesVariablesTypes extends App {
+
   /** Val Keyword */
   //val x: Int = 42;  //Okay
   val x = 42          //Type inferred by compiler

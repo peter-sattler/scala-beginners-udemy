@@ -15,7 +15,9 @@ import scala.language.postfixOps
  * </ol>
  */
 object MethodNotations extends App {
+
   /** Lesson */
+
   //SYNTACTIC SUGAR - Infix (or operator) notation:
   //NOTE: For single parameter methods only!!!
   val mary = new Person("Mary", "Inception")

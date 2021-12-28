@@ -27,15 +27,18 @@ package net.sattler22.lectures.part1basics
  * </ol>
  */
 object Objects {
+
   object Person {
     val N_EYES = 2;
     def canFly: Boolean = true
     //Factory method:
     def apply(mother: Person, father: Person): Person = new Person("Bobby")
   }
+
   class Person(val name: String) {
     //instance level functionality
   }
+
   //INSTEAD OF: extends App
   def main(args: Array[String]):Unit = {
     println (Person.N_EYES)
