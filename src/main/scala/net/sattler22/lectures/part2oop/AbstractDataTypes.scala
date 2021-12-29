@@ -17,7 +17,30 @@ package net.sattler22.lectures.part1basics
  *     <li>Traits are BEHAVIOR, but an abstract class is a TYPE OF THING</li>
  *   </ol>
  *   <li>Scala's Type Hierarchy:</li>
- *   <img src="/images/scala-type-hierarchy.jpg" alt="Scala Type Hierarchy" width="500" height="600">
+ *   <pre>
+ *                       +-------------------------------+
+ *                       |          scala.Any            |
+ *                       +---------------+---------------+
+ *                                       |
+ *                  .-----------------------------------------.
+ *                  |                                         |
+ *  +---------------+---------------+         +---------------+---------------+
+ *  +         scala.AnyVal          +         |         scala.AnyRef          |
+ *  +-------------------------------+         +-------------------------------+
+ *  | (primitive types: Int, Unit,  |         | (java.lang.Object: String,    |
+ *  |  Boolean, ...)                |         |  Set, List, ...)              |
+ *  +---------------+---------------+         +---------------+---------------+
+ *                  |                                         |
+ *  +-------------------------------+         +-------------------------------+
+ *  + (classes that extend *AnyVal) +         |          scala.Null           |
+ *  +---------------+---------------+         +---------------+---------------+
+ *                  |                                         |
+ *                  .--------------------+--------------------.
+ *                                       |
+ *                       +-------------------------------+
+ *                       |        scala.Nothing          |
+ *                       +-------------------------------+
+ *   </pre>
  * </ol>
  */
 object AbstractDataTypes extends App {
