@@ -1,4 +1,4 @@
-package net.sattler22.lectures.part1basics
+package net.sattler22.lectures.part2oop
 
 /**
  * Abstract Data Types Takeaways:

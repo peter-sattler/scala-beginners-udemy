@@ -1,4 +1,4 @@
-package net.sattler22.lectures.part1basics
+package net.sattler22.lectures.part2oop
 
 /**
  * Inheritance Takeaways:
@@ -29,7 +29,7 @@ package net.sattler22.lectures.part1basics
  * </ol>
  */
 object Inheritance extends App {
-  
+
   class Animal {
     val creatureType = "Wild"
     def eat = println("Animal eats...")
