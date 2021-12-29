@@ -1,6 +1,6 @@
 # Scala &amp; Functional Programming Essentials | Rock the JVM (Udemy)
 by [Daniel Ciocîrlan](https://www.udemy.com/user/daniel-ciocirlan/)
-![Udemy Certificate](https://github.com/peter-sattler/scala-beginners-udemy/blob/main/certificate.jpg)
+![Udemy Certificate](https://github.com/peter-sattler/scala-beginners-udemy/blob/main/images/certificate.jpg)
 
 # Important Links
 
