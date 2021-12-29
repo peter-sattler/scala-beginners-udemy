@@ -9,6 +9,7 @@ package net.sattler22.lectures.part2oop
  *     <li>Are in their own class/li>
  *     <li>Are the only instance</li>
  *     <li>Singleton pattern in one line!</li>
+ *     <li>They can extend a class</li>
  *   </ul>
  *   <li>Scala Companions:/li>
  *   <ul>
