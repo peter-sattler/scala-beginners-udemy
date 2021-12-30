@@ -15,32 +15,34 @@ package net.sattler22.exercises
  *   </ul>
  * </ol>
  */
-abstract class MyList {
-  def head: Int
-  def tail: MyList
+abstract class MyList[+A] {
+  def head: A
+  def tail: MyList[A]
   def isEmpty: Boolean
-  def add(element: Int): MyList
+  def add[B >: A](element: B): MyList[B]
   def printElements: String  //Polymorphic call - Delegate implementation to sub-class
   override def toString: String = s"[${printElements}]"
 }
 
 //Empty List:
 //Use object since its a singleton and only ONE empty instance is needed
-//Three question marks will throw a "not implemented" error
-object Empty extends MyList {
-  def head: Int = throw new NoSuchElementException
-  def tail: MyList = throw new NoSuchElementException
+//NOTE: Three question marks will throw a "not implemented" error
+//NOTE: The Nothing type is ALWAYS a proper substitute for AnyType
+object Empty extends MyList[Nothing] {
+  def head: Nothing = throw new NoSuchElementException
+  def tail: MyList[Nothing] = throw new NoSuchElementException
   def isEmpty: Boolean = true
-  def add(element: Int): MyList = new Cons(element, Empty)
+  def add[B >: Nothing](element: B): MyList[B] = new Cons(element, Empty)
   def printElements: String = ""
 }
 
 //Non-Empty list:
-class Cons(h: Int, t: MyList) extends MyList {
-  def head: Int = h
-  def tail: MyList = t
+//Must be covariant too!!!
+class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
+  def head: A = h
+  def tail: MyList[A] = t
   def isEmpty: Boolean = false
-  def add(element: Int): MyList = new Cons(element, this)
+  def add[B >: A](element: B): MyList[B] = new Cons(element, this)
   def printElements: String = {
     if (t.isEmpty) "" + h
     else h + " " + t.printElements  //Scala 2 only!!!
@@ -49,10 +51,17 @@ class Cons(h: Int, t: MyList) extends MyList {
 
 //Scala application:
 object ListTest extends App {
-  var list = new Cons(1, new Cons(2, new Cons(3, Empty)))
-  println(list.head)         //1
-  println(list.tail.head)    //2
-  println(list.add(4).head)  //4 - Element gets added to head
-  println(list.isEmpty)      //false
-  println(list.toString)
+  var listOfIntegers: MyList[Int] = new Cons(1, new Cons(2, new Cons(3, Empty)))
+  println(listOfIntegers.head)         //1
+  println(listOfIntegers.tail.head)    //2
+  println(listOfIntegers.add(4).head)  //4 - Element gets added to head
+  println(listOfIntegers.isEmpty)      //false
+  println(listOfIntegers.toString)
+
+  var listOfStrings: MyList[String] = new Cons("Hello", new Cons("Scala", Empty))
+  println(listOfStrings.toString)      //Hello Scala
+
+  //Empty should be a proper value for a list of any type:
+  var listOfIntegers2: MyList[Int] = Empty
+  var listOfStrings2: MyList[String] = Empty
 }
