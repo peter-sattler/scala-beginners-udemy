@@ -73,7 +73,8 @@ abstract class MyList[+A] {
 //Use object since its a singleton and only ONE empty instance is needed
 //NOTE: Three question marks will throw a "not implemented" error
 //NOTE: The Nothing type is ALWAYS a proper substitute for AnyType
-object Empty extends MyList[Nothing] {
+//Good use for a case class!!!
+case object Empty extends MyList[Nothing] {
   def head: Nothing = throw new NoSuchElementException
   def tail: MyList[Nothing] = throw new NoSuchElementException
   def isEmpty: Boolean = true
@@ -87,7 +88,8 @@ object Empty extends MyList[Nothing] {
 
 //Non-Empty list:
 //Must be covariant too!!!
-class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
+//Good use for a case class!!!
+case class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
   def head: A = h
   def tail: MyList[A] = t
   def isEmpty: Boolean = false
@@ -176,4 +178,8 @@ object ListTest extends App {
   println(listOfIntegers.flatMap(new MyTransformer[Int, MyList[Int]] {
     override def transform(element: Int): MyList[Int] = new Cons(element, new Cons(element + 1, Empty))
   }))
+
+  //Case Classes Enhancement:
+  val listOfIntegersClone: MyList[Int] = new Cons(1, new Cons(2, new Cons(3, Empty)))
+  println(listOfIntegers == listOfIntegersClone)  //Case class equals() returns true
 }
