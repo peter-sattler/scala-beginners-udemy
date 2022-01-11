@@ -7,13 +7,13 @@ package net.sattler22.lectures.part1basics
  *   <li>var is mutable</li>
  *   <li>Prefer val to var</li>
  *   <li>Both have types</li>
- *   <li>Compiler infers type when ommitted</li>
+ *   <li>Compiler infers type when omitted</li>
  *   <li>Need extends App to run in IntelliJ
  * </ol>
  */
 object ValuesVariablesTypes extends App {
 
-  /** Val Keyword */
+  /** Values (No Side Effects) */
   //val x: Int = 42;  //Okay
   val x = 42          //Type inferred by compiler
   //x = 2             //They are immutable!!!
@@ -23,19 +23,18 @@ object ValuesVariablesTypes extends App {
   val s1: String = "Pete";
   println(s1)
 
-  //Other types:
+  /** Types */
   val bool1 = true
   val char1 = 'a'
-  val int1 = x
-  val short1 :  Short = 12345
-  val long1 = 123L
+  val int1 = x                //4 bytes
+  val short1:  Short = 12345  //2 bytes
+  val long1 = 123L            //8 bytes
   val float1 = 2.0f
-  val double1 : Double = 3.0
+  val double1: Double = 3.0
 
-  /** Variables */
+  /** Variables (Have Side Effects) */
   var v1: Int = 4
   println(v1)
-
   v1 = 5            //Mutable, but has SIDE EFFECTS
   println(v1)
 }
