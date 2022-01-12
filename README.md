@@ -27,21 +27,21 @@ by [Daniel Ciocîrlan](https://www.udemy.com/user/daniel-ciocirlan/)
 
 ## Section 3: Object-Oriented Programming in Scala
 
-10. Object-Oriented Basics
+10. [Object-Oriented Basics](/src/main/scala/net/sattler22/lectures/part2oop/OOBasics.scala)
 11. Object-Oriented Basics (exercises)
-12. Syntactic Sugar: Method Notations
+12. [Syntactic Sugar: Method Notations](/src/main/scala/net/sattler22/lectures/part2oop/MethodNotations.scala)
 13. Method Notations (Exercises)
-14. Scala Objects
-15. Inheritance
-16. Inheritance, Continued: Abstract Classes and Traits
+14. [Scala Objects](/src/main/scala/net/sattler22/lectures/part2oop/Objects.scala)
+15. [Inheritance](/src/main/scala/net/sattler22/lectures/part2oop/Inheritance.scala)
+16. [Inheritance, Continued: Abstract Classes and Traits](/src/main/scala/net/sattler22/lectures/part2oop/AbstractDataTypes.scala)
 17. Inheritance Exercises: Implementing Our Own Collection
-18. Generics
-19. Anonymous Classes
+18. [Generics](/src/main/scala/net/sattler22/lectures/part2oop/Generics.scala)
+19. [Anonymous Classes](/src/main/scala/net/sattler22/lectures/part2oop/AnonymousClasses.scala)
 20. Object-Oriented Exercises: Expanding Our Collection
-21. Case Classes
-22. Scala 3: Enums
-23. Exceptions
-24. Packaging and Imports
+21. [Case Classes](/src/main/scala/net/sattler22/lectures/part2oop/CaseClasses.scala)
+22. [Scala 3: Enums](/src/main/scala/net/sattler22/lectures/part2oop/Enums.scala)
+23. [Exceptions](/src/main/scala/net/sattler22/lectures/part2oop/Exceptions.scala)
+24. [Packaging and Imports](/src/main/scala/net/sattler22/lectures/part2oop/PackagingAndImports.scala)
 
 ## Section 4: Functional Programming in Scala
 
