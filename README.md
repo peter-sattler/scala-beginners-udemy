@@ -1,6 +1,6 @@
 # Scala &amp; Functional Programming Essentials | Rock the JVM (Udemy)
 by [Daniel Ciocîrlan](https://www.udemy.com/user/daniel-ciocirlan/)
-![Udemy Certificate](https://github.com/peter-sattler/scala-beginners-udemy/blob/main/images/certificate.jpg)
+![Udemy Certificate](/images/certificate.jpg)
 
 # Important Links
 
@@ -16,14 +16,14 @@ by [Daniel Ciocîrlan](https://www.udemy.com/user/daniel-ciocirlan/)
 
 ## Section 2: The Absolute Scala Basics
 
-2. Values, Variables and Types
-3. Expressions
-4. Functions
+2. [Values, Variables and Types](/src/main/scala/net/sattler22/lectures/part1basics/ValuesVariablesTypes.scala)
+3. [Expressions](/src/main/scala/net/sattler22/lectures/part1basics/Expressions.scala)
+4. [Functions](/src/main/scala/net/sattler22/lectures/part1basics/Functions.scala)
 5. Type Inference
-6. Recursion
-7. Call-by-Name and Call-by-Value
-8. Default and Named Arguments
-9. Smart Operations on Strings
+6. [Recursion](/src/main/scala/net/sattler22/lectures/part1basics/Recursion.scala)
+7. [Call-by-Name and Call-by-Value](/src/main/scala/net/sattler22/lectures/part1basics/CBNvsCBV.scala)
+8. [Default and Named Arguments](/src/main/scala/net/sattler22/lectures/part1basics/DefaultArgs.scala)
+9. [Smart Operations on Strings](/src/main/scala/net/sattler22/lectures/part1basics/StringOps.scala)
 
 ## Section 3: Object-Oriented Programming in Scala
 
