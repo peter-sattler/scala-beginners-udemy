@@ -34,12 +34,13 @@ object Functions extends App {
   println(function2("Hello2", 3))
 
   //Unit is an acceptable return type:
+  //NOTE: Side effects are needed if it does something besides computations (like printing to the console)!!!
   def sideEffectFunction1(s: String): Unit = println(s)
 
   //Code blocks allow nesting:
   def bigFunction1(n: Int): Int = {
     def smallerFunction1(a: Int, b: Int): Int = a + b
-    smallerFunction1(n, n - 1)
+    smallerFunction1(n, n - 1)     //Return EXPRESSION
   }
 
   /** Exercises */
