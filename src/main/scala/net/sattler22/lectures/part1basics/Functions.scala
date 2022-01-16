@@ -7,7 +7,7 @@ package net.sattler22.lectures.part1basics
  *   <li>Using Unit type</li>
  *   <li>Use nest functions (code blocks)</li>
  *   <li>Recursion in Scala</li>
- *   <li>Compiler can infer data types and return types, but not the return type for a recursive function</li>
+ *   <li>Type Inference: The compiler can infer data types and return types, but not the return type for a recursive function</li>
  * </ol>
  */
 object Functions extends App {
