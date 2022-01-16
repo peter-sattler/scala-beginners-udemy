@@ -19,7 +19,7 @@ object Functions extends App {
 
   def function2(): Int = 42
   println(function2())
-  println(function2)               //Parameterless -- Scala 2 Only!!!
+  //println(function2)             //Parameterless -- Scala 2 Only!!!
 
   //WHEN YOU NEED LOOPS, USE RECURSION!!!
   def concatenate(s: String, n: Int): String = {
