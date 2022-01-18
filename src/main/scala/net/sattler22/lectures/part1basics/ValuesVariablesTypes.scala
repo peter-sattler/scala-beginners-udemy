@@ -14,9 +14,9 @@ package net.sattler22.lectures.part1basics
 object ValuesVariablesTypes extends App {
 
   /** Values (No Side Effects) */
-  //val x: Int = 42;  //Okay
-  val x = 42          //Type inferred by compiler
-  //x = 2             //They are immutable!!!
+  //val x: Int = 42;          //Okay
+  val x = 42                  //Type inferred by compiler
+  //x = 2                     //They are immutable!!!
   println(x)
 
   //Semi-colons are optional (required for multiple statements per line):
@@ -35,6 +35,6 @@ object ValuesVariablesTypes extends App {
   /** Variables (Have Side Effects) */
   var v1: Int = 4
   println(v1)
-  v1 = 5            //Mutable, but has SIDE EFFECTS
+  v1 = 5                      //Mutable, but has SIDE EFFECTS
   println(v1)
 }
