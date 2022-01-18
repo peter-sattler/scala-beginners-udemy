@@ -15,11 +15,11 @@ object Functions extends App {
   def function1(a: String, b: Int): String = {
     a + " " + b
   }
-  println(function1("Hello1", 3))  //Also an EXPRESSION!!!
+  println(function1("Hello1", 3))            //Also an EXPRESSION!!!
 
   def function2(): Int = 42
   println(function2())
-  //println(function2)             //Parameterless -- Scala 2 Only!!!
+  //println(function2)                       //Parameterless -- Scala 2 Only!!!
 
   //WHEN YOU NEED LOOPS, USE RECURSION!!!
   def concatenate(s: String, n: Int): String = {
@@ -40,7 +40,7 @@ object Functions extends App {
   //Code blocks allow nesting:
   def bigFunction1(n: Int): Int = {
     def smallerFunction1(a: Int, b: Int): Int = a + b
-    smallerFunction1(n, n - 1)     //Return EXPRESSION
+    smallerFunction1(n, n - 1)               //Return EXPRESSION
   }
 
   /** Exercises */
@@ -53,14 +53,14 @@ object Functions extends App {
     if (n <= 0) 1
     else n * factorial(n - 1)
   }
-  println(factorial(5))  //120
+  println(factorial(5))                      //120
 
   //3. Fibonacci function => prints the nth number in the sequence that always starts with [1, 1]
   //   fn(1) = 1
   //   fn(2) = 1
   //   fn(n) = fn(n-1) + fn(n-2) (recursive)
   def fibonacci(n: Int): Int = {
-    if (n <= 2) 1  //The first two in the sequence are 1
+    if (n <= 2) 1                            //The first two in the sequence are 1
     else fibonacci(n - 1) + fibonacci(n - 2)
   }
   // 1 1 2 3 5 8 13 21
