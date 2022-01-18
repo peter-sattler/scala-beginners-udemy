@@ -88,7 +88,7 @@ object Expressions extends App {
   }
   println(someValue1)
 
-  //value of last expression: 42 (integer)
+  //Value of last expression: 42 (integer)
   val someValue2 = {
     if(someValue1) 239 else 986
     42
