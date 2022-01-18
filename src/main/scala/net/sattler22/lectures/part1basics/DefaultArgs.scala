@@ -11,22 +11,19 @@ package net.sattler22.lectures.part1basics
  */
 object DefaultArgs extends App {
 
-  /** Default and Named Arguments */
   def factorialTailRec(n: Int, accumulator: Int = 1): Int = {
     if (n <= 1) accumulator
     else factorialTailRec(n -1, n * accumulator)
   }
-  println(factorialTailRec(10))                 //Default accumulator is 1
-  println(factorialTailRec(10, 2))  //Overrides default
+  println(factorialTailRec(10))           //Default accumulator is 1
+  println(factorialTailRec(10, 2))        //Overrides the default
 
   def savePicture(format: String = "jpg", width: Int = 1920, height: Int = 1080): Unit = println("Saving picture...")
-  savePicture("jpg", 800, 600)  //Works fine
-//  savePicture(800, 600)           //FAIL - compiler assumes 800 is first parameter
+  savePicture("jpg", 800, 600)            //Works fine
+//savePicture(800, 600)                   //FAIL - compiler assumes 800 is first parameter
 
-  /*
-   * We can fix this by either:
-   * 1. pass in every leading argument
-   * 2. Name the arguments
-   */
+  //When there are multiple arguments, we can either:
+  // 1. Pass in every leading argument
+  // 2. Name the arguments
   savePicture(height = 600, width = 800)  //Named argument can be in any order
 }
