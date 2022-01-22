@@ -20,7 +20,7 @@ package net.sattler22.lectures.part2oop
  */
 object OOBasics extends App {
 
-  val p1 = new Person("Pete", 56)
+  val p1 = new Person("Pete", 57)
   println(p1.age)
   println(p1.x)
   p1.greet("Fred")
