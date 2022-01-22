@@ -72,7 +72,7 @@ abstract class MyList[+A] {
 //Empty List:
 //  -> Use object since its a singleton and only ONE empty instance is needed
 //  -> Three question marks will throw a "not implemented" error
-//  -> The Nothing type is ALWAYS a proper substitute for AnyType
+//  -> The scala.Nothing type is ALWAYS a proper substitute for scala.Any type
 //  -> Good use for a case class!!!
 case object Empty extends MyList[Nothing] {
   def head: Nothing = throw new NoSuchElementException
@@ -154,9 +154,9 @@ object ListTest extends App {
   println(listOfIntegers.toString)                //[1 2 3]
 
   val listOfStrings: MyList[String] = new Cons("Hello", new Cons("Scala", Empty))
-  println(listOfStrings.toString)                 //Hello Scala
+  println(listOfStrings.toString)                 //"Hello Scala"
 
-  //Empty should be a proper value for a list of any type:
+  //Empty should be a proper value for a list of Any type:
   val listOfIntegersEmpty: MyList[Int] = Empty
   val listOfStringsEmpty: MyList[String] = Empty
 
