@@ -14,12 +14,12 @@ package net.sattler22.lectures.part2oop
  */
 object AnonymousClasses extends App {
 
-  //Works with a trait too:
   abstract class Animal {
-    def eat:Unit
+    def eat: Unit
   }
 
-  //Anonymous class - compiler creates a class with a unique name
+  //Anonymous class (works with traits too):
+  //The compiler automatically creates a class with a unique name!!!
   val funnyAnimal: Animal = new Animal {
     override def eat: Unit = println("Funny Animal")
   }
@@ -28,10 +28,10 @@ object AnonymousClasses extends App {
     override def eat: Unit = println("Funny Animal")
   }
   //val funnyAnimal = new AnonymousClass$$anon$1
-  println(funnyAnimal.getClass)
+  println(funnyAnimal.getClass)  //AnonymousClasses$$anon$1
 
-  //Must pass in the required super class parameters even if the class is anonymous:
-  //Must provide implementation for all abstract fields and/or methods
+  //Still required to pass in the required super class parameters and
+  //provide an implementation for all abstract fields and/or methods even if it's anonymous:
   class Person(name: String) {
     def sayHi:Unit = println(s"Hi, my name is $name, how can I help?")
   }
