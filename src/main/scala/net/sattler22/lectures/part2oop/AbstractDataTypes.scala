@@ -3,18 +3,18 @@ package net.sattler22.lectures.part2oop
 /**
  * Abstract Data Types Takeaways:
  * <ol>
- *   <li>Abstract class - Has unimplemented fields and/or methods which will be implemented in sub-class(es)</li>
+ *   <li>An abstract class has unimplemented fields and/or methods which will be implemented by it's sub-class(es)</li>
  *   <li>Traits:</li>
  *   <ul>
  *     <li>The ultimate abstract data type in Scala</li>
- *     <li>Multiple can be inherited along with classes!!!</li>
+ *     <li>In a single class, multiple traits can be mixed in, but only one class can be inherited</li>
  *     <li>Used to support multiple inheritance</li>
  *   </ul>
  *   <li>Traits vs. Abstract Classes:</li>
  *   <ol>
  *     <li>Traits do not have constructor parameters</li>
- *     <li>Multiple traits may be inherited by the same class</li>
- *     <li>Traits are BEHAVIOR, but an abstract class is a TYPE OF THING</li>
+ *     <li>Multiple traits may be mixed in using the <i>with</i> keyword</li>
+ *     <li>Traits are <strong>BEHAVIOR</strong>, but an abstract class is a <strong>TYPE OF THING</strong></li>
  *   </ol>
  *   <li>Scala's Type Hierarchy:</li>
  *   <pre>
@@ -28,7 +28,7 @@ package net.sattler22.lectures.part2oop
  *  +         scala.AnyVal          +         |         scala.AnyRef          |
  *  +-------------------------------+         +-------------------------------+
  *  | (primitive types: Int, Unit,  |         | (java.lang.Object: String,    |
- *  |  Boolean, ...)                |         |  Set, List, ...)              |
+ *  |  Boolean, Float, ...)         |         |  Set, List, ...)              |
  *  +---------------+---------------+         +---------------+---------------+
  *                  |                                         |
  *  +-------------------------------+         +-------------------------------+
@@ -45,10 +45,10 @@ package net.sattler22.lectures.part2oop
  */
 object AbstractDataTypes extends App {
 
-  //Abstract class
+  //Abstract class:
   abstract class Animal {
-    val creatureType: String = "wild"
-    def eat: Unit  //abstract method
+    val creatureType: String = "Wild"
+    def eat: Unit                  //Abstract method
   }
 
   class Dog extends Animal {
@@ -59,7 +59,7 @@ object AbstractDataTypes extends App {
   //Traits:
   trait Carnivore {
     val preferredMeal: String = "Fresh Meat"
-    def eat(animal: Animal): Unit  //abstract method
+    def eat(animal: Animal): Unit  //Abstract method
   }
 
   trait ColdBlooded
@@ -73,5 +73,5 @@ object AbstractDataTypes extends App {
 
   val dog = new Dog
   val crocodile = new Crocodile
-  crocodile.eat(dog)  //I'm a crocodile and I am eating a Canine
+  crocodile.eat(dog)               //I'm a crocodile and I am eating a Canine
 }
