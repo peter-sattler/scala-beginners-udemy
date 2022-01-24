@@ -65,7 +65,7 @@ abstract class MyList[+A] {
 //  -> Use object since its a singleton and only ONE empty instance is needed
 //  -> Three question marks will throw a "not implemented" error
 //  -> The scala.Nothing type is ALWAYS a proper substitute for scala.Any type
-//  -> Good use for a case class!!!
+//  -> Good use for a case object!!!
 case object Empty extends MyList[Nothing] {
   def head: Nothing = throw new NoSuchElementException
   def tail: MyList[Nothing] = throw new NoSuchElementException
