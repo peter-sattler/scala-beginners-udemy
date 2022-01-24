@@ -1,7 +1,7 @@
 package net.sattler22.exercises
 
 /**
- * Implementing Our Own Collection -- VERY CHALLENGING!!!
+ * Implementing Our Own Collection
  *
  * <h3>Initial Requirements</h3>
  * <ol>
@@ -9,50 +9,42 @@ package net.sattler22.exercises
  *   <li>A singly linked list</li>
  *   <li>Methods:</li>
  *   <ul>
- *     <li>head returns the first element of the list</li>
- *     <li>tail returns the remainder of the list</li>
- *     <li>isEmpty checks if the list does not contain any elements</li>
- *     <li>add(int) adds an element to the list and returns a new (immutable) list</li>
- *     <li>toString provides a meaningful string representation of the list</li>
+ *     <li><i>head</i> returns the first element of the list</li>
+ *     <li><i>tail</i> returns the remainder of the list</li>
+ *     <li><i>isEmpty</i> checks if the list does not contain any elements</li>
+ *     <li><i>add(int)</i> adds an element to the list and returns a new (immutable) list</li>
+ *     <li><i>toString</i> provides a meaningful string representation of the list</li>
  *   </ul>
  * </ol>
  *
  * <h3>Object-Oriented Exercises: Expanding Our Collection Enhancements</h3>
  * <ol>
- *   <li>Create a generic trait MyPredicate(-T):</li>
+ *   <li>Create a generic trait <i>MyPredicate(-T)</i>:</li>
  *   <ul>
- *     <li>tests if T passes a condition</li>
- *     <li>test(T): Boolean</li>
- *     <li>HINT: Define MyPredicate contravariant in the type T (otherwise code will not compile)</li>
+ *     <li>Tests if T passes a condition</li>
+ *     <li>Method: <i>test(T): Boolean</i></li>
+ *     <li><strong>HINT</strong>: Define <i>MyPredicate</i> contravariant in the type T (otherwise code will not compile)</li>
  *   </ul>
- *   <li>Create a generic trait MyTransformer(-A, B):</li>
+ *   <li>Create a generic trait <i>MyTransformer(-A, B)</i>:</li>
  *   <ul>
- *     <li>converts A to B</li>
- *     <li>transform(A): B</li>
- *     <li>HINT: Define MyTransformer contravariant in the type A (otherwise code will not compile)</li>
+ *     <li>Converts type A to type B</li>
+ *     <li>Method: <i>transform(A): B</i></li>
+ *     <li><strong>HINT</strong>: Define <i>MyTransformer</i> contravariant in the type A (otherwise code will not compile)</li>
  *   </ul>
- *   <li>Expand MyList functionality:</li>
+ *   <li>Expand <i>MyList</i> functionality:</li>
  *   <ul>
- *     <li>map(transformer) which returns MyList of different type</li>
- *     <li>filter(predicate) which returns MyList</li>
- *     <li>flatMap(transformer from A to MyList[B] which returns MyList[B]</li>
- *   </ul>
- *   <li>Concrete classes:</li>
- *   <ul>
- *     <li>class EvenPredicate extends MyPredicate[Int]</li>
+ *     <li>Method <i>map(transformer)</i> which returns <i>MyList</i> of a different type</li>
+ *     <li>Method <i>filter(predicate)</i> which returns <i>MyList</i> including only the matching elements</li>
+ *     <li>Method <i>flatMap(transformer from A to MyList[B]</i> which returns <i>MyList[B]</i></li>
+ *     <li>Create <i>class EvenPredicate extends MyPredicate[Int]</i> with method <i>test</i> which will return true if T is even</li>
+ *     <li>Create <i>class StringToIntTransformer extends MyTransformer(String, Int)</i> with method <i>transform</i> which
+ *         will convert the string into an integer</li>
+ *     <li>Examples:</li>
  *     <ul>
- *       <li>test will return true if T is even</li>
+ *       <li>[1, 2, 3].map(n * 2) results in [2, 4, 6]</li>
+ *       <li>[1, 2, 3].filter(n % 2 == 0) results in [2]</li>
+ *       <li>[1, 2, 3].flatMap(n => n, n+1) results in [1,2, 2,3, 3,4]</li>
  *     </ul>
- *     <li>class StringToIntTransformer extends MyTransformer(String, Int)</li>
- *     <ul>
- *       <li>transform method convert the string to an integer</li>
- *     </ul>
- *   </ul>
- *   <li>Examples:</li>
- *   <ul>
- *     <li>[1, 2, 3].map(n * 2) results in [2, 4, 6]</li>
- *     <li>[1, 2, 3].filter(n % 2 == 0) results in [2]</li>
- *     <li>[1, 2, 3].flatMap(n => n + 1) results in [1,2, 2,3, 3,4]</li>
  *   </ul>
  * </ol>
  */
@@ -98,6 +90,11 @@ case class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
   def map[B](transformer: MyTransformer[A, B]): MyList[B] = {
     //Transform the head and tail:
     //NOTE: Result will have the same number of elements!!!
+    //Example: [1,2,3].map(n * 2)
+    // -> new Cons(2, [2,3].map(n * 2))
+    // -> new Cons(2, new Cons(4, [3].map(n * 2)))
+    // -> new Cons(2, new Cons(4, new Cons(6, Empty.map(n * 2))))
+    // -> new Cons(2, new Cons(4, new Cons(6, Empty)))
     new Cons(transformer.transform(h), t.map(transformer))
   }
   def filter(predicate: MyPredicate[A]): MyList[A] = {
@@ -115,7 +112,7 @@ case class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
     //Example: [1, 2].flatMap(n => n + 1) results in [1,2, 2,3]
     // -> [1,2] ++ [2].flatMap(n => n + 1)
     // -> [1,2] ++ [2,3] ++ Empty.flatMap(n => n + 1)
-    // -> [1,2] ++ [2,3]
+    // -> [1,2] ++ [2,3] ++ Empty
     // -> [1,2,2,3]
     transformer.transform(h) ++ t.flatMap(transformer)
   }
