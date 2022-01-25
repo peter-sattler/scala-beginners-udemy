@@ -3,50 +3,82 @@ package net.sattler22.lectures.part2oop
 /**
  * Exceptions Takeaways:
  * <ol>
- *   <li>Exceptions crash your program</li>
- *   <li>Throwing them returns Nothing</li>
+ *   <li>Exceptions crash your program :(</li>
+ *   <li>Throwing Exceptions:</li>
+ *   <ul>
+ *     <li>Throwing an exception in Scala (like everything else) is an <strong>expression</strong></li>
+ *     <li>Throwing an exception always returns scala.Nothing</li>
+ *     <li>Scala uses the same exception hierarchy as Java:</li>
+ *     <ul>
+ *       <li>Exceptions are classes that extend the <i>Throwable</i> class</li>
+ *       <li><i>Exception</i> and <i>Error</i> are the major <i>Throwable</i> sub-types</li>
+ *       <li>Exceptions indicate something went wrong with the <strong>program</strong></li>
+ *       <li>Errors indicate something went wrong with the <strong>system</strong> (JVM)</li>
+ *     </ul>
+ *   </ul>
+ *   <li>How to Catch Exceptions:</li>
+ *   <ul>
+ *     <li>Exceptions come from Java and are specific to the JVM</li>
+ *     <li>The value of the <i>try/catch/finally</i> expression is scala.AnyVal, but it may be more specific depending on the usage</li>
+ *     <li>The <i>finally</i> expression is optional and will get executed no matter what</li>
+ *     <li>The <i>finally</i> does not influence the return type of the expression (use for side effects only)</li>
+ *   </ul>
+ *   <li>Custom Exceptions:</li>
+ *   <ul>
+ *     <li>Simply extend it from the <i>Exception</i> class</li>
+ *     <li>Then throw it like any other exception!!!</li>
+ *   <ul>
  * </ol>
  */
 object Exceptions extends App {
 
-  //1. Throwing an exception in Scala (like everything else) is an expression:
-  //Same exception hierarchy as Java (Throwable sub-classes are Exception and Error)
-  val exception1 = throw new NullPointerException          //Nothing - no value, but can be assigned
-  val exception2: String = throw new NullPointerException  //Nothing is a valid substitute for any other type
+  //Throwing an exception:
+  //val exception1 = throw new NullPointerException          //Nothing (no value), but can still be assigned!!!
+  //val exception2: String = throw new NullPointerException  //scala.Nothing is always a valid substitute for any other type
 
-  //2. Catching exceptions:
-  //NOTE: Exceptions are JVM specific
-  //The value of try/catch is AnyVal (try is Int and catch is Int), so it depends
-  //Finally block is optional and does not influence the return type. Use for side effects only!!!
+  //Catching an exception:
   def getInt(withExceptions: Boolean): Int = {
-    if (withExceptions) throw new RuntimeException("Integer exception")
+    if (withExceptions) throw new RuntimeException("Integer Runtime Exception!!!")
     else 42
   }
   val potentialFail = try {
     getInt(true)
   }
   catch {
-    case exception: RuntimeException => println("Caught a RuntimeException")
+    case exception: RuntimeException => println(exception.getMessage)
   }
   finally {
-    println("Finally gets executed no matter what")
+    println("Finally expression gets executed no matter what")
   }
 
-  //3. Custom exceptions:
+  //Custom exceptions:
   class MyException extends Exception
-  val exception = new MyException
-  throw exception
+  try {
+    val exception = new MyException
+    throw exception
+  }
+  catch {
+    case exception: MyException => println("Custom Exception!!!")
+  }
 
   /** Exercises */
+  //Crash program with an out of memory error (OOM):
+  try {
+    val crash = Array.ofDim[Int](Int.MaxValue)               //Too many elements
+  }
+  catch {
+    case exception: OutOfMemoryError => println(exception.getMessage)
+  }
 
-  //1. Crash program with an OutOfMemoryError (OOM):
-  val array = Array.ofDim(Int.MaxValue)  //Too many elements
-
-  //2. Crash with StackOverflowError:
+  //Crash with a stack overflow error:
   def infinite: Int = 1 + infinite
-  val noLimit = infinite
-
-  //3. PocketCalculator class (use Ints):
+  try {
+    val fillTheKnownUniverse = infinite
+  }
+  catch {
+    case exception: StackOverflowError => println(exception)
+  }
+  //PocketCalculator class (use Ints):
   //   -> add(x,y)
   //   -> subtract(x,y)
   //   -> multiply(x,y)
@@ -71,7 +103,7 @@ object Exceptions extends App {
       result
     }
     def subtract(x: Int, y: Int) = {
-      //Left out exception conditions (same idea as add)...
+      //NOTE: Left out exception conditions here (same idea as add method)...
       x - y
     }
     def multiply(x: Int, y: Int) = {
@@ -82,6 +114,22 @@ object Exceptions extends App {
       x / y
     }
   }
-  println(PocketCalculator.add(Int.MaxValue, 5))
-  println(PocketCalculator.divide(10, 0))
+  try {
+    println(PocketCalculator.add(Int.MaxValue * - 1, -5))
+  }
+  catch {
+    case exception: UnderflowException => println(s"Pocket Calculator: $exception")
+  }
+  try {
+    println(PocketCalculator.add(Int.MaxValue, 5))
+  }
+  catch {
+    case exception: OverflowException => println(s"Pocket Calculator: $exception")
+  }
+  try {
+    println(PocketCalculator.divide(10, 0))
+  }
+  catch {
+    case exception: MathCalculationException => println(s"Pocket Calculator: ${exception.getMessage}")
+  }
 }
