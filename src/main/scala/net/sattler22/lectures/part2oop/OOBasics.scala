@@ -81,8 +81,7 @@ class Writer(firstName: String, surName: String, val yearOfBirth:Int) {
 class Counter(val count: Int = 0) {
   def increment = new Counter(count + 1)                                      //Immutable
   def increment(amount: Int): Counter = {
-    //Can also call the other increment method n times
-    //BUT instead of looping, use recursion!!!
+    //Can also call the other increment method n times, BUT instead of looping, use recursion!!!
     if (amount <= 0) this                                                     //Optimization - nothing to increment, so just use the SAME instance!!!
     else increment.increment(amount - 1)
   }
