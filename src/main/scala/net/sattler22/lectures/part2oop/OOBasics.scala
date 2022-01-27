@@ -57,40 +57,37 @@ object OOBasics extends App {
   def print(novel: Novel) =
     println(s"[${novel.name}] was written by [${novel.author.fullName()}] when he was [${novel.authorAge()}] and released in [${novel.yearOfRelease}]")
 
-  class Novel(val name: String, val yearOfRelease: Int, val author: Writer) {
-    def authorAge() = yearOfRelease - author.yearOfBirth
-    def isWrittenBy(author: Writer): Boolean = this.author == author          //Same EXACT object!!!
-    def copy(yearOfRelease: Int): Novel = new Novel(this.name, yearOfRelease, this.author)
-  }
-
-  class Writer(firstName: String, surName: String, val yearOfBirth:Int) {
-    def fullName(): String = s"$firstName $surName"
-  }
-
   //2. Counter class
   //  -> Receives an int value
   //  -> Current method - returns current count
   //  -> increment/decrement method (returns a new Counter)
   //  -> Overload increment/decrement to receive an amount (returns a new Counter)
-  val counter = new Counter                   //No parens needed for parameter-less constructors or methods
+  val counter = new Counter                                                   //No parens needed for parameter-less constructors or methods
   counter.increment.print
   counter.increment.increment.increment.print
   counter.increment(5).print
-
-  class Counter(val count: Int = 0) {
-    def increment = new Counter(count + 1)    //Immutable
-    def increment(amount: Int): Counter = {
-      //Can also call the other increment method n times
-      //BUT instead of looping, use recursion!!!
-      if (amount <= 0) this                   //Optimization - nothing to increment, so just use the SAME instance!!!
-      else increment.increment(amount - 1)
-    }
-    def decrement = new Counter(count - 1)
-    def decrement(amount: Int) = new Counter(count - amount)
-    def print = println(count)
-  }
 }
 
+class Novel(val name: String, val yearOfRelease: Int, val author: Writer) {
+  def authorAge() = yearOfRelease - author.yearOfBirth
+  def isWrittenBy(author: Writer): Boolean = this.author == author            //Same EXACT object!!!
+  def copy(yearOfRelease: Int): Novel = new Novel(this.name, yearOfRelease, this.author)
+}
 
+class Writer(firstName: String, surName: String, val yearOfBirth:Int) {
+  def fullName(): String = s"$firstName $surName"
+}
 
+class Counter(val count: Int = 0) {
+  def increment = new Counter(count + 1)                                      //Immutable
+  def increment(amount: Int): Counter = {
+    //Can also call the other increment method n times
+    //BUT instead of looping, use recursion!!!
+    if (amount <= 0) this                                                     //Optimization - nothing to increment, so just use the SAME instance!!!
+    else increment.increment(amount - 1)
+  }
+  def decrement = new Counter(count - 1)
+  def decrement(amount: Int) = new Counter(count - amount)
+  def print = println(count)
+}
 
