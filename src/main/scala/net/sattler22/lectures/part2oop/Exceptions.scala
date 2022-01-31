@@ -79,14 +79,14 @@ object Exceptions extends App {
     case exception: StackOverflowError => println(exception)
   }
   //PocketCalculator class (use Ints):
-  //   -> add(x,y)
-  //   -> subtract(x,y)
-  //   -> multiply(x,y)
-  //   -> divide(x,y)
-  //   Throw
-  //     -> OverflowException if add(x,y) exceeds Int.MAX_VALUE
-  //     -> UnderflowException if subtract(x,y) exceeds Int.MIN_VALUE
-  //     -> MathCalculationException for division by zero
+  //  -> add(x,y)
+  //  -> subtract(x,y)
+  //  -> multiply(x,y)
+  //  -> divide(x,y)
+  //  Throw
+  //    -> OverflowException if add(x,y) exceeds Int.MAX_VALUE
+  //    -> UnderflowException if subtract(x,y) exceeds Int.MIN_VALUE
+  //    -> MathCalculationException for division by zero
   class OverflowException extends RuntimeException
   class UnderflowException extends RuntimeException
   class MathCalculationException extends RuntimeException("Division by zero")
