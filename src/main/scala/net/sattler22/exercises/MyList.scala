@@ -3,7 +3,7 @@ package net.sattler22.exercises
 /**
  * Implementing Our Own Collection
  *
- * <h3>Initial Requirements</h3>
+ * <h3>Section 3: Initial Requirements</h3>
  * <ol>
  *   <li>Describes an immutable list of any type</li>
  *   <li>A singly linked list</li>
@@ -17,7 +17,7 @@ package net.sattler22.exercises
  *   </ul>
  * </ol>
  *
- * <h3>Object-Oriented Exercises: Expanding Our Collection Enhancements</h3>
+ * <h3>Section 3: Object-Oriented Exercises: Expanding Our Collection Enhancements</h3>
  * <ol>
  *   <li>Create a generic trait <i>MyPredicate(-T)</i>:</li>
  *   <ul>
@@ -47,15 +47,24 @@ package net.sattler22.exercises
  *     </ul>
  *   </ul>
  * </ol>
+ *
+ * <h3>Section 4: What's a Function Exercise</h3>
+ * <ol>
+ *   <li>Higher-order functions:</li>
+ *   <ul>
+ *     <li>Replace the <i>MyPredicate(-T)</i> trait with it's function type <i>T => Boolean</i></li>
+ *     <li>Replace the <i>MyTransformer[-A, B]</i> trait with it's function type <i>A => B</i></li>
+ *   </ul>
+ * </ol>
  */
 abstract class MyList[+A] {
   def head: A
   def tail: MyList[A]
   def isEmpty: Boolean
   def add[B >: A](element: B): MyList[B]                               //Use return type [B >: A] to avoid contravariant error message
-  def map[B](transformer: MyTransformer[A, B]): MyList[B]              //OO Exercises Enhancements
-  def filter(predicate: MyPredicate[A]): MyList[A]                     //OO Exercises Enhancements
-  def flatMap[B](transformer: MyTransformer[A, MyList[B]]): MyList[B]  //OO Exercises Enhancements
+  def map[B](transformer: A => B): MyList[B]                           //Higher-order functions exercise
+  def filter(predicate: A => Boolean): MyList[A]                       //Higher-order functions exercise
+  def flatMap[B](transformer: A => MyList[B]): MyList[B]               //Higher-order functions exercise
   def ++[B >: A](list: MyList[B]): MyList[B]                           //Concatenation
   def printElements: String                                            //Polymorphic call which delegates implementation to a sub-class
   override def toString: String = s"[$printElements]"                  //Override scala.AnyRef class
@@ -71,9 +80,9 @@ case object Empty extends MyList[Nothing] {
   def tail: MyList[Nothing] = throw new NoSuchElementException
   def isEmpty: Boolean = true
   def add[B >: Nothing](element: B): MyList[B] = new Cons(element, Empty)
-  def map[B](transformer: MyTransformer[Nothing, B]): MyList[B] = Empty
-  def filter(predicate: MyPredicate[Nothing]): MyList[Nothing] = Empty
-  def flatMap[B](transformer: MyTransformer[Nothing, MyList[B]]): MyList[B] = Empty
+  def map[B](transformer: Nothing => B): MyList[B] = Empty
+  def filter(predicate: Nothing => Boolean): MyList[Nothing] = Empty
+  def flatMap[B](transformer: Nothing => MyList[B]): MyList[B] = Empty
   def ++[B >: Nothing](list: MyList[B]): MyList[B] = list              //List remains unchanged!!!
   def printElements: String = ""
 }
@@ -87,7 +96,7 @@ case class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
   def tail: MyList[A] = t
   def isEmpty: Boolean = false
   def add[B >: A](element: B): MyList[B] = new Cons(element, this)
-  def map[B](transformer: MyTransformer[A, B]): MyList[B] = {
+  def map[B](transformer: A => B): MyList[B] = {
     //Transform the head and tail:
     //NOTE: Result will have the same number of elements!!!
     //Example: [1,2,3].map(n * 2)
@@ -95,9 +104,9 @@ case class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
     // -> new Cons(2, new Cons(4, [3].map(n * 2)))
     // -> new Cons(2, new Cons(4, new Cons(6, Empty.map(n * 2))))
     // -> new Cons(2, new Cons(4, new Cons(6, Empty)))
-    new Cons(transformer.transform(h), t.map(transformer))
+    new Cons(transformer(h), t.map(transformer))
   }
-  def filter(predicate: MyPredicate[A]): MyList[A] = {
+  def filter(predicate: A => Boolean): MyList[A] = {
     //Test head and always filter the tail:
     //Example: filter [1,2,3], results in [2]
     // -> [1,2,3].filter(element % 2 == 0)                  //element=1, 1 / 2 (R=1), test fails (else), remove head, filter=[2,3]
@@ -105,16 +114,16 @@ case class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
     // -> new Cons(2, [3].filter(element % 2 == 0)          //element=3: 3 / 2 (R=1), test fails (else), remove head, filter=[2]
     // -> new Cons(2. Empty.filter(element % 2 == 0)        //element=2: 2 / 2 (R=0), test passes (if), new Cons with head=2, filter=[Empty]
     // -> new Cons(2, Empty)                                //result=[2]
-    if (predicate.test(h)) new Cons(h, t.filter(predicate)) //Head included
+    if (predicate(h)) new Cons(h, t.filter(predicate))      //Head included
     else t.filter(predicate)                                //Head filtered out (excluded)
   }
-  def flatMap[B](transformer: MyTransformer[A, MyList[B]]): MyList[B] = {
+  def flatMap[B](transformer: A => MyList[B]): MyList[B] = {
     //Example: [1, 2].flatMap(n => n + 1) results in [1,2, 2,3]
     // -> [1,2] ++ [2].flatMap(n => n + 1)
     // -> [1,2] ++ [2,3] ++ Empty.flatMap(n => n + 1)
     // -> [1,2] ++ [2,3] ++ Empty
     // -> [1,2,2,3]
-    transformer.transform(h) ++ t.flatMap(transformer)
+    transformer(h) ++ t.flatMap(transformer)
   }
   def ++[B >: A](list: MyList[B]): MyList[B] = {
     //Example: [1,2] ++ [3,4,5], results in [1,2,3,4,5]
@@ -129,15 +138,6 @@ case class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
     //else h + " " + t.printElements              //This only works in Scala 2
     else s"$h ${t.printElements}"                 //For Scala 3, use a String interpolator
   }
-}
-
-//OO Exercises Enhancements:
-trait MyPredicate[-T] {
-  def test(element: T): Boolean
-}
-
-trait MyTransformer[-A, B] {
-  def transform(element: A): B
 }
 
 //Scala application:
@@ -159,23 +159,23 @@ object ListTest extends App {
 
   //OO Exercise Example 1:
   //[1, 2, 3].map(n * 2) ==> [2, 4, 6]
-  println(listOfIntegers.map(new MyTransformer[Int, Int] {
-    override def transform(element: Int): Int = element * 2
+  println(listOfIntegers.map(new Function1[Int, Int] {
+    override def apply(element: Int): Int = element * 2
   }))
 
   //OO Exercise Example 2:
   //[1, 2, 3].filter(n % 2 == 0) ==> [2]
   //NOTE: Modulus operator finds the remainder after division of one number by another
-  println(listOfIntegers.filter(new MyPredicate[Int] {
-    override def test(element: Int): Boolean = element % 2 == 0
+  println(listOfIntegers.filter(new Function1[Int, Boolean] {
+    override def apply(element: Int): Boolean = element % 2 == 0
   }).toString)
 
   //OO Exercise Example 3:
   //[1, 2, 3].flatMap(n => n + 1) ==> [1,2, 2,3, 3,4]
   val testConcatenation: MyList[Int] = new Cons(4, new Cons(5, Empty))
   println(listOfIntegers ++ testConcatenation)    //[1,2,3,4,5]
-  println(listOfIntegers.flatMap(new MyTransformer[Int, MyList[Int]] {
-    override def transform(element: Int): MyList[Int] = new Cons(element, new Cons(element + 1, Empty))
+  println(listOfIntegers.flatMap(new Function1[Int, MyList[Int]] {
+    override def apply(element: Int): MyList[Int] = new Cons(element, new Cons(element + 1, Empty))
   }))
 
   //Case Classes Enhancement:
