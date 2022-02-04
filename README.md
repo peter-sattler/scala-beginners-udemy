@@ -46,7 +46,7 @@ by [Daniel Ciocîrlan](https://www.udemy.com/user/daniel-ciocirlan/)
 ## Section 4: Functional Programming in Scala
 
 25. [What's a Function, Really?](/src/main/scala/net/sattler22/lectures/part3fp/WhatsAFunction.scala)
-26. Anonymous Functions
+26. [Anonymous Functions (Lambdas)](/src/main/scala/net/sattler22/lectures/part3fp/AnonymousFunctions.scala)
 27. Higher-Order-Functions and Curries
 28. HOFs and Curries (Exercises)
 29. map, flatMap, filter and for-comprehensions
