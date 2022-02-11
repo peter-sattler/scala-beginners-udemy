@@ -56,6 +56,11 @@ package net.sattler22.exercises
  *     <li>Replace the <i>MyTransformer[-A, B]</i> trait with it's function type <i>A => B</i></li>
  *   </ul>
  * </ol>
+ *
+ * <h3>Section 4: Anonymous Functions (Lambdas) Exercise</h3>
+ * <ol>
+ *   <li>Replace all <i>FunctionX</i> calls with lambdas</li>
+ * </ol>
  */
 abstract class MyList[+A] {
   def head: A
@@ -157,26 +162,40 @@ object ListTest extends App {
   val listOfIntegersEmpty: MyList[Int] = Empty
   val listOfStringsEmpty: MyList[String] = Empty
 
+  //Concatenation operator:
+  val testConcatenation: MyList[Int] = new Cons(4, new Cons(5, Empty))
+  println(listOfIntegers ++ testConcatenation)    //[1,2,3,4,5]
+
   //OO Exercise Example 1:
   //[1, 2, 3].map(n * 2) ==> [2, 4, 6]
-  println(listOfIntegers.map(new Function1[Int, Int] {
-    override def apply(element: Int): Int = element * 2
-  }))
+  //println(listOfIntegers.map(new Function1[Int, Int] {
+  //  override def apply(element: Int): Int = element * 2
+  //}))
+
+  //Lambda Replacement Exercise Example 1:
+  //[1, 2, 3].map(n * 2) ==> [2, 4, 6]
+  println(listOfIntegers.map(_ * 2))
 
   //OO Exercise Example 2:
   //[1, 2, 3].filter(n % 2 == 0) ==> [2]
   //NOTE: Modulus operator finds the remainder after division of one number by another
-  println(listOfIntegers.filter(new Function1[Int, Boolean] {
-    override def apply(element: Int): Boolean = element % 2 == 0
-  }).toString)
+  //println(listOfIntegers.filter(new Function1[Int, Boolean] {
+  //  override def apply(element: Int): Boolean = element % 2 == 0
+  //}).toString)
+
+  //Lambda Replacement Exercise Example 2:
+  //[1, 2, 3].filter(n % 2 == 0) ==> [2]
+  println(listOfIntegers.filter(_ % 2 == 0).toString)
 
   //OO Exercise Example 3:
   //[1, 2, 3].flatMap(n => n + 1) ==> [1,2, 2,3, 3,4]
-  val testConcatenation: MyList[Int] = new Cons(4, new Cons(5, Empty))
-  println(listOfIntegers ++ testConcatenation)    //[1,2,3,4,5]
-  println(listOfIntegers.flatMap(new Function1[Int, MyList[Int]] {
-    override def apply(element: Int): MyList[Int] = new Cons(element, new Cons(element + 1, Empty))
-  }))
+  //println(listOfIntegers.flatMap(new Function1[Int, MyList[Int]] {
+  //  override def apply(element: Int): MyList[Int] = new Cons(element, new Cons(element + 1, Empty))
+  //}))
+
+  //Lambda Replacement Exercise Example 3:
+  //[1, 2, 3].flatMap(n => n + 1) ==> [1,2, 2,3, 3,4]
+  println(listOfIntegers.flatMap(element => new Cons[Int](element, new Cons[Int](element + 1, Empty))))
 
   //Case Classes Enhancement:
   val listOfIntegersClone: MyList[Int] = new Cons(1, new Cons(2, new Cons(3, Empty)))
