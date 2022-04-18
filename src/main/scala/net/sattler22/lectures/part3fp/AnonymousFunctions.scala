@@ -19,14 +19,14 @@ import net.sattler22.exercises.{Cons, Empty, MyList}
  *   </ul>
  *   <li>Anatomy of a Lambda:</li>
  *   <pre>
- *                   name
- *                    |  type (optional)
- *       parameter    |   |  return type (always inferred)
- *     +----------+   |   |  |   +---- implementation ----+
- *     |          |   |   |  |   |  (single expression)   |
- *  +--V----------V---V---V--V---V------------------------V-+
- *  | (name: String, age:Int) => s"$name is $age years old" |
- *  +-------------------------------------------------------+
+ *                  name
+ *                   |   type (optional)
+ *       parameter   |    |  return type (always inferred)
+ *     +----------+  |    |   |   +---- implementation ----+
+ *     |          |  |    |   |   |  (single expression)   |
+ *  +--V----------V--V----V---V---V------------------------V-+
+ *  | (name: String, age: Int) => s"$name is $age years old" |
+ *  +--------------------------------------------------------+
  *   </pre>
  * </ol>
  */
@@ -40,21 +40,21 @@ object AnonymousFunctions extends App {
 
   //Functional way uses an anonymous function (lambda):
   val fxDoubler1 = (x: Int) => x * 2              //Same as OO doubler
-  val fxDoubler2: Int => Int = (x: Int) => x * 2  //Including return type
+  val fxDoubler2: Int => Int = (x: Int) => x * 2  //Including function return type (Int => Int)
   val fxDoubler: Int => Int = x => x * 2          //Short-hand form using compiler type inference
   println(s"Lambda Doubler: [${fxDoubler(3)}]")
 
-  //Multiple parameter lambda requires parentheses:
+  //Multiple parameter lambdas require parentheses:
   val fxAdder1 = (a: Int, b: Int) => a + b
   val fxAdder: (Int, Int) => Int = (a, b) => a + b
   println(s"Lambda Adder: [${fxAdder(5, 3)}]")
 
   //No parameter lambda:
-  val noParm: () => Int = () => 3                 //Type is () => Int
-  println(s"No parameter Lambda: [${noParm}]")    //Function itself (calls toString method)
-  println(s"No parameter Lambda: [${noParm()}]")  //Lambdas must be called with parentheses!!!
+  val noParam: () => Int = () => 3                //Type is () => Int
+  println(s"No parameter Lambda: [${noParam}]")   //Function itself (calls toString method)
+  println(s"No parameter Lambda: [${noParam()}]") //Lambdas must be called with parentheses!!!
 
-  //Using lambdas with curly braces is common practice:
+  //Using lambdas with curly braces is a common practice:
   val stringToInt = { (s: String) =>
     s.toInt
   }
