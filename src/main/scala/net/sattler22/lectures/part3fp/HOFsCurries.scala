@@ -68,7 +68,7 @@ object HOFsCurries extends App {
 
   //Functions with multiple parameter lists:
   //  -> There can be as many parameter lists as needed, but their type MUST be specified!!!
-  //  -> Smaller functions can then be defined for later use
+  //  -> Smaller functions can then be created for later use
   def curriedFormatter(c: String)(x: Double): String = c.format(x)
   val standardFormatter: (Double => String) = curriedFormatter("%4.2f")
   val preciseFormatter: (Double => String) = curriedFormatter("%10.8f")
