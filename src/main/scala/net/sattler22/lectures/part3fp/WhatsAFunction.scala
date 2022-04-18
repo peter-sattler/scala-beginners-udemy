@@ -52,7 +52,7 @@ object WhatsAFunction extends App {
     override def apply(a: Int, b: Int): Int = a + b
   }
   val adderWithSugar: (Int, Int) => Int = new Function2[Int, Int, Int] {
-    override def apply(a: Int, b: Int): Int = a + b       //Function2[A, B, R] becomes (A, B) => R
+    override def apply(a: Int, b: Int): Int = a + b       //Function2[A, B, R] can also be expressed as (A, B) => R
   }
   val adderWithExtraSugar: (Int, Int) => Int = (a: Int, b: Int) => a + b
   println(s"Adding two integers: [${adderWithExtraSugar(2, 3)}]")
@@ -84,5 +84,5 @@ object WhatsAFunction extends App {
   }
   val adder3 = superAdder(3);                             //New function with type Int => Int
   println(s"Adder3 returns: [${adder3(4)}]")
-  println(s"Super Adder returns: [${superAdder(3)(4)}]")  //Curried function
+  println(s"Super Adder returns: [${superAdder(3)(4)}]")  //Curried function (called with multiple parameter lists)
 }
