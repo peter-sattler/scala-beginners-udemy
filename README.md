@@ -7,6 +7,7 @@ by [Daniel Ciocîrlan](https://www.udemy.com/user/daniel-ciocirlan/)
 [Rock the JVM's Scala Beginners Course](https://www.udemy.com/course/rock-the-jvm-scala-for-beginners/)  
 [Official GitHub Repository](https://github.com/rockthejvm/udemy-scala-beginners)  
 [ROCK THE JVM!](https://rockthejvm.com)  
+[Scala Standard Library](https://www.scala-lang.org/api/current)
 
 # Course Outline
 
@@ -49,7 +50,7 @@ by [Daniel Ciocîrlan](https://www.udemy.com/user/daniel-ciocirlan/)
 26. [Anonymous Functions (Lambdas)](/src/main/scala/net/sattler22/lectures/part3fp/AnonymousFunctions.scala)
 27. [Higher-Order-Functions and Curries](/src/main/scala/net/sattler22/lectures/part3fp/HOFsCurries.scala)
 28. HOFs and Curries (Exercises)
-29. map, flatMap, filter and for-comprehensions
+29. [Map, Flat Map, Filter and For-Comprehensions](/src/main/scala/net/sattler22/lectures/part3fp/MapFlatmapFilterForComprehensions.scala)
 30. A Collections Overview
 31. Sequences: List, Array, Vector
 32. Tuples and Maps

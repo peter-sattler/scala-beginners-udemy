@@ -2,4 +2,5 @@ target/
 .idea/**/libraries
 .idea/**/vcs.xml
 .idea/**/workspace.xml
+.idea/uiDesigner.xml
 

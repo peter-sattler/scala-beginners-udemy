@@ -72,6 +72,17 @@ package net.sattler22.exercises
  *     <li><i>fold</i> which receives a start value and a function as separate parameter lists (curried) and returns a value</li>
  *   </ul>
  * </ol>
+ *
+ * <h3>Section 4: Map, Flat Map, Filter and For-Comprehensions</h3>
+ * <ol>
+ *   <li>Check for-comprehensions support</li>
+ *   <li>Since the compiler rewrites them into chains of <i>map</i>, <i>flatMap</i> and <i>filter</i>, they must have these signatures:</li>
+ *   <ul>
+ *     <li><i>map(transformer: A => B)</i> and returns MyList[B]</li>
+ *     <li><i>flatMap(transformer: A => MyList[B])</i> and returns MyList[B]</li>
+ *     <li><i>filter(predicate: A => Boolean)</i> and returns MyList[A]</li>
+ *   </ul>
+ * </ol>
  */
 abstract class MyList[+A] {
   def head: A
@@ -256,4 +267,11 @@ object ListTest extends App {
   println(listOfIntegers.sort((x, y) => y - x))   //Reverse the elements
   println(testConcatenation.zipWith[String, String](listOfStrings, _ + "-" + _))
   println(listOfIntegers.fold(0)(_ + _))          //Often called reduce
+
+  //Map, Flat Map, Filter and For-Comprehensions Exercise:
+  val combinations = for {
+    num <- listOfIntegers
+    string <- listOfStrings
+  } yield num + "-" + string
+  println(combinations)
 }
