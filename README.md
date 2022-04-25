@@ -53,7 +53,7 @@ by [Daniel Ciocîrlan](https://www.udemy.com/user/daniel-ciocirlan/)
 29. [Map, Flat Map, Filter and For-Comprehensions](/src/main/scala/net/sattler22/lectures/part3fp/MapFlatmapFilterForComprehensions.scala)
 30. A Collections Overview
 31. [Sequences: List, Array, Vector](/src/main/scala/net/sattler22/lectures/part3fp/Sequences.scala)
-32. Tuples and Maps
+32. [Tuples and Maps](/src/main/scala/net/sattler22/lectures/part3fp/TuplesAndMaps.scala)
 33. Tuples and Maps (Exercises)
 34. Options
 35. Handling Failure
