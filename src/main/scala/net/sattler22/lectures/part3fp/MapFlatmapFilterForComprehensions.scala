@@ -7,6 +7,7 @@ package net.sattler22.lectures.part3fp
  *   <li>Functional programming uses <i>flatMap</i> and <i>map</i> for "iteration":</li>
  *   <ul>
  *     <li>For-comprehensions make the it more readable</li>
+ *     <li>For-comprehensions yield an expression</li>
  *   </ul>
  *   <li>Functional programming uses <i>Maybe</i> to denote optional values:</li>
  *   <ul>
