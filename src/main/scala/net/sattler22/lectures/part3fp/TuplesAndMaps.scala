@@ -51,7 +51,7 @@ object TuplesAndMaps extends App {
   println(s"Phone book map values: ${phoneBook.view.mapValues(num => "245-" + num).toMap}")          //Map(Fred -> 245-5555, Pete -> 245-6789)
   println(s"Phone book list conversion: ${phoneBook.toList}")                                        //List((Fred,5555), (Pete,6789))
   println(s"List to map conversion: ${List(("Pete", 6789)).toMap}")                                  //Map(Pete -> 6789)
-  val names = List("Bob","Bill","Pat","Pete","Lou")
+  val names = List("Bob", "Bill", "Pat", "Pete", "Lou")
   println(s"Names group by: ${names.groupBy(name => name.charAt(0))}")                               //HashMap(L -> List(Lou), B -> List(Bob, Bill), P -> List(Pat, Pete))
 
   /** Exercises */
@@ -137,19 +137,19 @@ object TuplesAndMaps extends App {
   //Social Network #1:
   val empty: Map[String, Set[String]] = Map()
   val network1 = add(add(empty, "Bob"), "Mary")
-  println(s"Social network #1: $network1")
-  println(s"Bob and Mary are friends: ${friend(network1, "Bob","Mary")}")
-  println(s"Bob and Mary no longer like each other: ${unfriend(network1, "Bob","Mary")}")
-  println(s"Bob removes himself: ${remove(network1, "Bob")}")
+  println(s"Social network #1: $network1")                                                           //Map(Bob -> Set(), Mary -> Set())
+  println(s"Bob and Mary are friends: ${friend(network1, "Bob", "Mary")}")                           //Map(Bob -> Set(Mary), Mary -> Set(Bob))
+  println(s"Bob and Mary no longer like each other: ${unfriend(network1, "Bob", "Mary")}")           //Map(Bob -> Set(), Mary -> Set())
+  println(s"Bob removes himself: ${remove(network1, "Bob")}")                                        //Map(Mary -> Set())
 
   //Social Network #2:
   val network2a = add(add(add(add(empty, "Bob"), "Mary"), "Jim"), "Pete")
   val network2b = friend(network2a, "Bob", "Jim")
   val network2 = friend(network2b, "Bob", "Mary")
-  println(s"Social network #2: $network2")
-  println(s"Bob has [${nbrFriends(network2, "Bob")}] friends")
-  println(s"The Most Friends award goes to: [${mostFriends(network2)}]")
-  println(s"Total without any friends: [${nbrNoFriends(network2)}]")
-  println(s"Jim has a connection with Mary: [${hasConnection(network2, "Jim", "Mary")}]")
-  println(s"Pete has a connection with Mary: [${hasConnection(network2, "Pete", "Mary")}]")
+  println(s"Social network #2: $network2")                                                           //Map(Bob -> Set(Jim, Mary), Mary -> Set(Bob), Jim -> Set(Bob), Pete -> Set())
+  println(s"Bob has [${nbrFriends(network2, "Bob")}] friends")                                       //[2]
+  println(s"The Most Friends award goes to: [${mostFriends(network2)}]")                             //[Bob]
+  println(s"Total without any friends: [${nbrNoFriends(network2)}]")                                 //[1]
+  println(s"Jim has a connection with Mary: [${hasConnection(network2, "Jim", "Mary")}]")            //[true]
+  println(s"Pete has a connection with Mary: [${hasConnection(network2, "Pete", "Mary")}]")          //[false]
 }
