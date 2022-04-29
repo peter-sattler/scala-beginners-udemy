@@ -1,7 +1,5 @@
 package net.sattler22.lectures.part3fp
 
-import java.util.NoSuchElementException
-import scala.:+
 import scala.annotation.tailrec
 
 /**
