@@ -49,7 +49,7 @@ object Options extends App {
   //  -> If it connects, then call the connected method
   //  -> The configuration is fetched from somewhere else, so it might be missing!!!
   val config: Map[String, String] = Map(
-    "host" -> "75.258.219.51",
+    "host" -> "localhost",
     "port" -> "110"
   )
 
