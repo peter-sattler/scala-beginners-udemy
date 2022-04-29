@@ -56,7 +56,7 @@ by [Daniel Ciocîrlan](https://www.udemy.com/user/daniel-ciocirlan/)
 32. [Tuples and Maps](/src/main/scala/net/sattler22/lectures/part3fp/TuplesAndMaps.scala)
 33. Tuples and Maps (Exercises)
 34. [Options](/src/main/scala/net/sattler22/lectures/part3fp/Options.scala)
-35. Handling Failure
+35. [Handling Failure](/src/main/scala/net/sattler22/lectures/part3fp/HandlingFailure.scala)
 
 ## Section 5: Pattern Matching
 
