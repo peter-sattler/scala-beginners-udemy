@@ -55,7 +55,7 @@ object HandlingFailure extends App {
   /** Exercise */
   //Given the following API, try to print the HTML page:
   //  -> If it connects, then call the renderHtml method
-  def renderHtml(page: String) = println(page)
+  def renderHtml(page: String): Unit = println(page)
 
   class Connection {
     def get(uri: String): String = {
