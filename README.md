@@ -61,7 +61,7 @@ by [Daniel Ciocîrlan](https://www.udemy.com/user/daniel-ciocirlan/)
 ## Section 5: Pattern Matching
 
 36. [Pattern Matching](/src/main/scala/net/sattler22/lectures/part4pm/PatternMatching.scala)
-37. ALL the Patterns!
+37. [ALL the Patterns!](/src/main/scala/net/sattler22/lectures/part4pm/AllThePatterns.scala)
 38. Patterns Everywhere
 39. Scala 3: Braceless Syntax
 
