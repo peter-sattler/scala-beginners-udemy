@@ -63,7 +63,7 @@ by [Daniel Ciocîrlan](https://www.udemy.com/user/daniel-ciocirlan/)
 36. [Pattern Matching](/src/main/scala/net/sattler22/lectures/part4pm/PatternMatching.scala)
 37. [ALL the Patterns!](/src/main/scala/net/sattler22/lectures/part4pm/AllThePatterns.scala)
 38. [Patterns Everywhere](/src/main/scala/net/sattler22/lectures/part4pm/PatternsEverywhere.scala)
-39. Scala 3: Braceless Syntax
+39. [Scala 3: Braceless Syntax](/src/main/scala/net/sattler22/lectures/part4pm/BracelessSyntax.scala)
 
 ## Section 6: You rock!
 40. What's next
