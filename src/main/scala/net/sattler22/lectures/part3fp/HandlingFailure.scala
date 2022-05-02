@@ -31,9 +31,9 @@ object HandlingFailure extends App {
   println(s"Computation failed: ${Failure(new RuntimeException("Something bad happened!!!"))}")  //Failure(java.lang.RuntimeException: Something bad happened!!!)
 
   //Try objects:
-  def unsafeMethod(): String = throw new RuntimeException("No String for you!!!")                //Failure(java.lang.RuntimeException: No String for you!!!)
+  def unsafeMethod(): String = throw new RuntimeException("No String for you!!!")
   def backupMethod(): String = "A valid result"
-  println(s"Potential failure: ${Try(unsafeMethod())}")
+  println(s"Potential failure: ${Try(unsafeMethod())}")                                          //Failure(java.lang.RuntimeException: No String for you!!!)
   val potentialFailure = Try {
     throw new RuntimeException("Syntactic sugar...")
   }
