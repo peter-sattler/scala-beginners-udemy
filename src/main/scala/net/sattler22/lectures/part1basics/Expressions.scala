@@ -59,10 +59,10 @@ object Expressions extends App {
     println(i)
     i += 1
   }
-  println(while1)
+  println(while1)                      //Returns ()
 
   //Code Blocks:
-  //An EXPRESSION whose VALUE is the VALUE of it's LAST expression
+  //An EXPRESSION whose VALUE is the VALUE of it's LAST expression!!!
   val codeBlock1 = {
     val y = 2
     val z = 1
@@ -86,12 +86,12 @@ object Expressions extends App {
   val someValue1 = {
     2 < 3
   }
-  println(someValue1)
+  println(someValue1)                  //true
 
   //Value of last expression: 42 (integer)
   val someValue2 = {
     if(someValue1) 239 else 986
     42
   }
-  print(someValue2)
+  print(someValue2)                    //42
 }
