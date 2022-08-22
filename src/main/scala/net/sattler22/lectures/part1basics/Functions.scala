@@ -15,10 +15,11 @@ object Functions extends App {
   def function1(a: String, b: Int): String = {
     a + " " + b
   }
-  println(function1("Hello1", 3))            //Also an EXPRESSION!!!
+  //Also an EXPRESSION!!!
+  println(function1("Hello1", 3))            //Hello1 3
 
   def function2(): Int = 42
-  println(function2())
+  println(function2())                       //42
   //println(function2)                       //Parameterless -- Scala 2 Only!!!
 
   //WHEN YOU NEED LOOPS, USE RECURSION!!!
@@ -26,12 +27,12 @@ object Functions extends App {
     if (n == 1) s
     else s + concatenate(s, n - 1)
   }
-  println(concatenate("Recursion1", 3))
+  println(concatenate("Recursion1", 3))      //Recursion1Recursion1Recursion1
 
   //The compiler can infer the return type EXCEPT for recursive functions!!!
   //Best Practice: Always specify the return type
   def function2(a: String, b: Int) = a + " " + b
-  println(function2("Hello2", 3))
+  println(function2("Hello2", 3))            //Hello2 3
 
   //Unit is an acceptable return type:
   //NOTE: Side effects are needed if it does something besides computations (like printing to the console)!!!
@@ -83,7 +84,7 @@ object Functions extends App {
     }
     isPrimeUntil(n / 2)
   }
-  println(isPrime(1))
-  println(isPrime(4))
-  println(isPrime(11))
+  println(isPrime(1))                        //true
+  println(isPrime(4))                        //false
+  println(isPrime(11))                       //true
 }
