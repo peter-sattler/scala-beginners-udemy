@@ -8,7 +8,7 @@ package net.sattler22.lectures.part1basics
  *   <li>Prefer val to var</li>
  *   <li>Both have types</li>
  *   <li>Compiler infers type when omitted</li>
- *   <li>Need extends App to run in IntelliJ
+ *   <li>Need extends App to run in IntelliJ</li>
  * </ol>
  */
 object ValuesVariablesTypes extends App {
