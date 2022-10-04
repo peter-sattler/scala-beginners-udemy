@@ -21,10 +21,10 @@ package net.sattler22.lectures.part2oop
 object OOBasics extends App {
 
   val p1 = new Person("Pete", 57)
-  println(p1.age)
-  println(p1.x)
-  p1.greet("Fred")
-  p1.greet()
+  println(p1.age)                                                             //[57]
+  println(p1.x)                                                               //[2]
+  p1.greet("Fred")                                                            //[Pete says: Hi, Fred]
+  p1.greet()                                                                  //[Pete and Pete are the same here]
 
   class Person(name: String, val age: Int) {
     val x = 2                                                                 //Class field (val or var)
